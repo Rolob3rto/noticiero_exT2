@@ -7,15 +7,15 @@
       <div class="container">
         <form style="width: 18em;" th:action="@{/noticias/save}" method="post">
           <div class="mb-3">
-            <label for="exampleInput1" class="form-label">Titular</label>
+            <label for="exampleInput1" th:text="#{noticias.new.titular}" class="form-label">Titular</label>
             <input  type="text" class="form-control" name="titular" id="exampleInput1">
           </div>
           <div class="mb-3">
-            <label for="exampleInput1" class="form-label">Descripcion</label>
+            <label for="exampleInput1" th:text="#{noticias.new.descripcion}" class="form-label">Descripcion</label>
             <input  type="text" class="form-control" name="descripcion" id="exampleInput1">
           </div>
-          <a class="btn btn-primary" th:href="@{/noticias/list}" href="#" role="button">Cancelar</a>
-          <button type="submit" class="btn btn-primary">Aceptar</button>
+          <a class="btn btn-primary" th:href="@{/noticias/list}" th:text="#{noticias.new.cancelar}" href="#" role="button">Cancelar</a>
+          <button type="submit" th:text="#{noticias.new.aceptar}" class="btn btn-primary">Aceptar</button>
         </form>
       </div>
       

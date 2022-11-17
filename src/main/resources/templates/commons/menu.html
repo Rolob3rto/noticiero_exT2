@@ -6,7 +6,7 @@
 
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Menú</a>
+        <a class="navbar-brand" th:text="#{menu.menu}" href="#">Menú</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -31,9 +31,9 @@
                 <!-- th:href="@{/login/welcome?lang_config=es}"
                      th:href="@{/login/welcome?lang_config=en}"
                 -->
-                <a class="dropdown-item" href="#"
+                <a class="dropdown-item" th:href="@{/noticias/list?idioma_setting=es}" href="#"
                   th:text="#{menu.idioma.espanol}">Español</a>
-                <a class="dropdown-item" href="#"
+                <a class="dropdown-item" th:href="@{/noticias/list?idioma_setting=en}" href="#"
                   th:text="#{menu.idioma.ingles}">Inglés</a>
               </div>
             </li>
@@ -44,18 +44,17 @@
           <ul th:unless="${session.usuario}" class="container">
             <form class="d-flex" style="width: 18em;" th:action="@{/noticias/login}" method="post">
                 <div class="mb-3">
-                <label for="exampleInput1" class="form-label">Usuario</label>
+                <label for="exampleInput1" th:text="#{menu.usuario}" class="form-label">Usuario</label>
                 <input  type="text" class="form-control" name="nombre" id="exampleInput1">
                 </div>
                 <div class="mb-3">
-                <label for="exampleInput1" class="form-label">Contraseña</label>
+                <label for="exampleInput1" th:text="#{menu.contrasena}" class="form-label">Contraseña</label>
                 <input  type="password" class="form-control" name="contrasena" id="exampleInput1">
                 </div>          
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
           </ul>
-
-          <!-- th:text="${session.usuario.nombre}" -->
+          
           <a th:if="${session.usuario}" th:href="@{/noticias/logout}" href="#"><i class="bi bi-box-arrow-left" th:text="${session.usuario.nombre}"></i></a>
         </div>
       </div>

@@ -8,15 +8,15 @@
         <form style="width: 18em;" th:action="@{/noticias/update}" method="post">
           <input type="hidden" th:value="${noticia.codigo}" name="codigo">
           <div class="mb-3">
-            <label for="exampleInput1" class="form-label">Titular</label>
+            <label for="exampleInput1" th:text="#{noticias.new.titular}" class="form-label">Titular</label>
             <input th:value="${noticia.titular}" type="text" name="titular" class="form-control" id="exampleInput1">
           </div>
           <div class="mb-3">
-            <label for="exampleInput1" class="form-label">descripcion</label>
+            <label for="exampleInput1" th:text="#{noticias.new.descripcion}" class="form-label">descripcion</label>
             <input th:value="${noticia.descripcion}" type="text" name="descripcion" class="form-control" id="exampleInput1">
           </div>          
-          <a class="btn btn-primary" th:href="@{/noticias/list}" href="#" role="button">Cancelar</a>
-          <button type="submit" class="btn btn-primary">Aceptar</button>
+          <a class="btn btn-primary" th:href="@{/noticias/list}" th:text="#{noticias.new.cancelar}" href="#" role="button">Cancelar</a>
+          <button type="submit" th:text="#{noticias.new.aceptar}" class="btn btn-primary">Aceptar</button>
         </form>
       </div>
       
