@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="commons/header :: header"/>
+<body>
+  <div th:replace="commons/menu :: menu" />
+
+      <div class="container">
+        <form style="width: 18em;" th:action="@{/noticias/update}" method="post">
+          <input type="hidden" th:value="${noticia.codigo}" name="codigo">
+          <div class="mb-3">
+            <label for="exampleInput1" class="form-label">Titular</label>
+            <input th:value="${noticia.titular}" type="text" name="titular" class="form-control" id="exampleInput1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInput1" class="form-label">descripcion</label>
+            <input th:value="${noticia.descripcion}" type="text" name="descripcion" class="form-control" id="exampleInput1">
+          </div>          
+          <a class="btn btn-primary" th:href="@{/noticias/list}" href="#" role="button">Cancelar</a>
+          <button type="submit" class="btn btn-primary">Aceptar</button>
+        </form>
+      </div>
+      
+
+      <div th:replace="commons/footer :: footer" class="container" />
+</body>
+</html>

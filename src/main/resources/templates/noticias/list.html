@@ -11,16 +11,20 @@
 
     <!-- Aqui que slaga boton crear cuando sea admin (name) -->
         <h1 th:text="#{noticias.list.titulo}">Noticias</h1>
-        <a class="btn btn-primary" th:text="#{noticias.list.nuevaNoticia}" th:href="@{/noticias/create}" href="new.html"
-        role="button">
-        Crear</a>
+        <div th:if="${session}">
+          <div th:if="${session.usuario}">
+            <a th:if="${session.usuario.nombre} == 'admin'" class="btn btn-primary" th:text="#{noticias.list.nuevaNoticia}" th:href="@{/noticias/create}" href="new.html"
+            role="button">
+            Crear</a>
+          </div>
+        </div>
 
     <table class="table table-striped">
       <thead>
         <tr>
           <th scope="col" th:text="#{noticias.list.codigo}">Codigo</th>
-          <th scope="col" th:text="#{noticias.list.nombre}">Titular</th>
-          <th scope="col" th:text="#{noticias.list.apellidos}">Descripcion</th>        
+          <th scope="col" th:text="#{noticias.list.titular}">Titular</th>
+          <th scope="col" th:text="#{noticias.list.descripcion}">Descripcion</th>        
           <th scope="col">---</th>
         </tr>
       </thead>
@@ -29,11 +33,15 @@
           <th scope="row" th:text="${noticia.codigo}">#</th>
           <td th:text="${noticia.titular}">---</td>
           <td th:text="${noticia.descripcion}">---</td>        
-          <td>          
-            <a class="btn btn-primary" th:text="#{noticias.list.editar}" th:href="@{/noticias/edit?codigo=}+${noticia.codigo}" href="edit.html"
-              role="button">
-              Editar</a>
-            <a class="btn btn-primary" th:href="@{/noticias/delete/}+${noticia.codigo}" href="#" role="button"><i class="bi bi-trash" th:text="#{noticias.list.borrar}"></i>Borrar</a>
+          <td>  
+            <div th:if="${session}">
+              <div th:if="${session.usuario}">
+                <a class="btn btn-primary" th:text="#{noticias.list.editar}" th:href="@{/noticias/edit?codigo=}+${noticia.codigo}" href="edit.html"
+                  role="button">
+                  Editar</a>
+                <a class="btn btn-primary" th:href="@{/noticias/delete/}+${noticia.codigo}" href="#" role="button"><i class="bi bi-trash" th:text="#{noticias.list.borrar}">Borrar</i></a>
+              </div>
+            </div>        
           </td>
         </tr>
       </tbody>
