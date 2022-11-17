@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="commons/header :: header"/>
+<body>
+  <div th:replace="commons/menu :: menu" />
+
+      <div class="container">
+        <form style="width: 18em;" th:action="@{/noticias/save}" method="post">
+          <div class="mb-3">
+            <label for="exampleInput1" class="form-label">Titular</label>
+            <input  type="text" class="form-control" name="titular" id="exampleInput1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInput1" class="form-label">Descripcion</label>
+            <input  type="text" class="form-control" name="descripcion" id="exampleInput1">
+          </div>
+          <a class="btn btn-primary" th:href="@{/noticias/list}" href="#" role="button">Cancelar</a>
+          <button type="submit" class="btn btn-primary">Aceptar</button>
+        </form>
+      </div>
+      
+
+      <div th:replace="commons/footer :: footer" class="container" />
+</body>
+</html>

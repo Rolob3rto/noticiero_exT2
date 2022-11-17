@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -100,4 +101,45 @@ public class NoticiaController {
 
          return modelAndView;
     }
+
+    @RequestMapping(path = "/delete/{codigo}")
+    public ModelAndView delete(@PathVariable(name = "codigo", required = true) int codigo){
+
+        List <Noticia> noticias = getNoticias();
+        noticias.remove(getNoticia(codigo));
+
+         ModelAndView modelAndView = new ModelAndView();
+         modelAndView.addObject("noticias", noticias);
+         modelAndView.setViewName("noticias/list");
+
+         return modelAndView;
+    }
+
+    @RequestMapping(path = "/create")
+    public ModelAndView create(){
+
+         ModelAndView modelAndView = new ModelAndView();
+         modelAndView.addObject("noticia", new Noticia());
+         modelAndView.setViewName("noticias/new");
+
+         return modelAndView;
+    }
+
+    @PostMapping(path = "/save")
+    public ModelAndView save(Noticia noticia){
+
+        int round = (int) (Math.random()*(100+5));
+
+        noticia.setCodigo(round);
+        
+        List <Noticia> noticias = getNoticias();
+        noticias.add(noticia);
+
+         ModelAndView modelAndView = new ModelAndView();
+         modelAndView.addObject("noticias", noticias);
+         modelAndView.setViewName("noticias/list");
+
+         return modelAndView;
+    }
+
 }
